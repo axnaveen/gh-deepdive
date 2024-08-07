@@ -4,8 +4,13 @@ on:
     branches:
       - main
       - dev
+env:
+  MONGO_DB_NAME: gha-demo
+
 jobs:
   test:
+    env:
+      MONGODB_PORT: 3000
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -19,11 +24,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:XYZ
+        run: npm start & npx wait-on http://127.0.0.1:${{ env.MONGODB_PORT }}
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "..."
+        run: echo "MONGODB_PORT:::::${{ env.MONGODB_PORT }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
