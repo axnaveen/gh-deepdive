@@ -67,11 +67,9 @@ jobs:
   information:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
-        uses: actions/checkout@v3
       - name: My Custom Javascript action
         id: sil
-        uses: ./.github/actions/deploy-js
+        uses: navmegam/js-action@v1
         with:
           bucket: 'my-s3-simulation'
       - name: Custom JavaScript Output
