@@ -76,3 +76,14 @@ jobs:
           bucket: 'my-s3-simulation'
       - name: Custom JavaScript Output
         run: echo '${{ steps.sil.outputs.bucket-url }}'
+
+  docker-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: My Custom Docker action
+        id: sil
+        uses: ./.github/actions/deploy-docker
+        with:
+          bucket: 'my-s3-docker-simulation'
+      - name: Custom Docker Output
+        run: echo '${{ steps.sil.outputs.bucket-url }}'
