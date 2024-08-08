@@ -70,6 +70,9 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: My Custom Javascript action
+        id: sil
         uses: ./.github/actions/deploy-js
         with:
           bucket: 'my-s3-simulation'
+      - name: Custom JavaScript Output
+        run: echo '${{ steps.sil.outputs.bucket-url }}'

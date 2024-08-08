@@ -8,6 +8,9 @@ inputs:
     description: 'Bucket Region'
     required: false
     default: 'eu-west-1'
+outputs:
+  bucket-url:
+    description: 'S3 Bucket URL'
 runs:
   using: 'node20'
   main: 'main.js'
